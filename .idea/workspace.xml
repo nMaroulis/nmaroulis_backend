@@ -60,19 +60,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="nmaroulis" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="nmaroulis" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="RestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="nmaroulis" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.nmaroulis_backend.RestApplication" />
@@ -103,7 +90,8 @@
       <workItem from="1585837792125" duration="1423000" />
       <workItem from="1585995447275" duration="326000" />
       <workItem from="1586273200042" duration="10971000" />
-      <workItem from="1631835018994" duration="3595000" />
+      <workItem from="1631835018994" duration="5133000" />
+      <workItem from="1631875634286" duration="5309000" />
     </task>
     <servers />
   </component>
