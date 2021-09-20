@@ -51,6 +51,7 @@ class UserController {
                     user.setUsername(newUser.getUsername());
                     user.setEmail(newUser.getEmail());
                     user.setPhone(newUser.getPhone());
+                    user.setResidence(newUser.getResidence());
                     user.setEducation(newUser.getEducation());
                     user.setWork(newUser.getWork());
                     user.setGender(newUser.getGender());
