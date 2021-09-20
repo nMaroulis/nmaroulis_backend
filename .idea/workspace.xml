@@ -49,7 +49,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/UserClient" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -96,7 +96,7 @@
       <workItem from="1586273200042" duration="10971000" />
       <workItem from="1631835018994" duration="5133000" />
       <workItem from="1631875634286" duration="7270000" />
-      <workItem from="1632049166051" duration="22887000" />
+      <workItem from="1632049166051" duration="31877000" />
     </task>
     <servers />
   </component>

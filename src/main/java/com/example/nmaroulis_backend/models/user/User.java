@@ -16,8 +16,11 @@ public class User {
     private String fname;
     private String lname;
 
-    private String username;
-    private @Column(unique=true) String email;
+    private @Column(unique=true) String username;
+    private String email;
+
+    private @Column(nullable = false) String password;
+
     private String phone;
     private String residence;
 
@@ -39,9 +42,10 @@ public class User {
 
     public User() {}
 
-    public User(String fname,String lname, String username,String email,
+    public User(String username, String password, String fname,String lname , String email,
                 String phone, String residence, String education,String work,String gender, Title title) {
         this.username = username;
+        this.password = password;
         this.fname = fname;
         this.lname = lname;
         this.email = email;
@@ -61,4 +65,11 @@ public class User {
         this.title = title;
     }
 
+    public void setUser(String username) {
+        this.username = username;
+    }
+
+    public void setToken(String token) {
+        this.password = token;
+    }
 }
