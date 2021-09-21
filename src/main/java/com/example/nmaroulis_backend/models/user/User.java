@@ -57,12 +57,15 @@ public class User {
         this.title = title;
     }
 
-    public User(String fname,String lname, String email, String gender, Title title) {
+    public User(String username, String password, String fname,String lname, String email, String gender, Title title,String residence) {
+        this.username = username;
+        this.password = password;
         this.email = email;
         this.fname = fname;
         this.lname = lname;
         this.gender = gender;
         this.title = title;
+        this.residence = residence;
     }
 
     public void setUser(String username) {

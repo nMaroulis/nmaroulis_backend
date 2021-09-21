@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import com.example.nmaroulis_backend.title.Title;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.omg.CORBA.portable.ResponseHandler;
@@ -76,16 +77,12 @@ class UserController {
     @PostMapping("user")
     public User login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
 
-
         User u = repository.findByUsername(username);
         if (u != null) {       // ELEGXOS EAN YPARXEI O USER -> FTIAXNEI TO TOKEN
 
             if(Objects.equals(u.getPassword(), pwd)){  //EAN O KWDIKOS EINAI SWSTOS
                 String token = getJWTToken(username);
-                // User user = new User();
-                // user.setUser(username);
                 u.setToken(token);
-
                 return u;
             }
             else {
@@ -116,6 +113,17 @@ class UserController {
                         secretKey.getBytes()).compact();
 
         return "Bearer " + token;
+    }
+
+
+    @PostMapping("/newuser")
+    User register(@RequestParam("user") String username, @RequestParam("password") String pwd,
+                  @RequestParam("fname") String fname, @RequestParam("lname") String lname,
+                  @RequestParam("email") String email, @RequestParam("gender") String gender,
+                  @RequestParam("title") String title, @RequestParam("residense") String residense) {
+
+
+        return repository.save(new User(username, pwd, fname, lname, email, gender, new Title(title), residense));
     }
 
 

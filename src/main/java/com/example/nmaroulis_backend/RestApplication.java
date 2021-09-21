@@ -30,6 +30,7 @@ public class RestApplication {
                     .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
                     .authorizeRequests()
                     .antMatchers(HttpMethod.POST, "/user").permitAll()
+                    .antMatchers(HttpMethod.POST, "/newuser").permitAll()
                     .anyRequest().authenticated();
         }
     }
