@@ -27,7 +27,7 @@ public class User {
     private String education;
     private String work;
     private String gender;
-
+    private String member_since;
     @ManyToOne (cascade= CascadeType.ALL)
     @JsonIgnoreProperties("users")
     private Title title;
@@ -43,7 +43,7 @@ public class User {
     public User() {}
 
     public User(String username, String password, String fname,String lname , String email,
-                String phone, String residence, String education,String work,String gender, Title title) {
+                String phone, String residence, String education,String work,String gender, Title title, String member_since) {
         this.username = username;
         this.password = password;
         this.fname = fname;
@@ -55,9 +55,10 @@ public class User {
         this.work = work;
         this.gender = gender;
         this.title = title;
+        this.member_since = member_since;
     }
 
-    public User(String username, String password, String fname,String lname, String email, String gender, Title title,String residence) {
+    public User(String username, String password, String fname,String lname, String email, String gender, Title title,String residence, String member_since) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -66,6 +67,7 @@ public class User {
         this.gender = gender;
         this.title = title;
         this.residence = residence;
+        this.member_since = member_since;
     }
 
     public void setUser(String username) {

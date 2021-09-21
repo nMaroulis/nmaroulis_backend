@@ -13,6 +13,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.*;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+
 
 @RestController
 class UserController {
@@ -60,6 +63,7 @@ class UserController {
                     user.setWork(newUser.getWork());
                     user.setGender(newUser.getGender());
                     user.setTitle(newUser.getTitle());
+                    user.setMember_since(newUser.getMember_since());
                     return repository.save(user);
                 })
                 .orElseGet(() -> {
@@ -122,8 +126,10 @@ class UserController {
                   @RequestParam("email") String email, @RequestParam("gender") String gender,
                   @RequestParam("title") String title, @RequestParam("residense") String residense) {
 
-
-        return repository.save(new User(username, pwd, fname, lname, email, gender, new Title(title), residense));
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String member_since = dtf.format(now); // pros8etei to pote egine to signup
+        return repository.save(new User(username, pwd, fname, lname, email, gender, new Title(title), residense,member_since));
     }
 
 
