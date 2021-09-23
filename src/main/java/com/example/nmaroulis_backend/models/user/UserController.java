@@ -5,10 +5,13 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import com.example.nmaroulis_backend.models.post.Post;
 import com.example.nmaroulis_backend.title.Title;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.omg.CORBA.portable.ResponseHandler;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -132,6 +135,79 @@ class UserController {
         return repository.save(new User(username, pwd, fname, lname, email, gender, new Title(title), residense,member_since));
     }
 
+    @GetMapping("/user/{userId}/connections")
+    List <User> getAllConnectionsByUserId(@PathVariable (value = "userId") Long userId) {
+
+        User u = repository.findById(userId).get(); // to get() voh8aei sto na epistrepsei user kai oxi apla Optional
+        List <User> connections = u.getConnections();
+        return connections;
+    }
+
+    @PutMapping("/user/{userId}/connection/{connectionId}")
+    User setConnectionByUserId(@PathVariable (value = "userId") Long userId,
+                                      @PathVariable (value = "connectionId") Long connectionId) {
+        User u = repository.findById(userId).get();
+        List <User> connections = u.getConnections();
+        User new_connection = repository.findById(connectionId).get();
+        connections.add(new_connection);
+        u.setConnections(connections);
+        return repository.save(u);
+
+    }
+
+
+    @GetMapping("/user/{userId}/requests")
+    List <User> getAllRequestsByUserId(@PathVariable (value = "userId") Long userId) {
+
+        User u = repository.findById(userId).get(); // to get() voh8aei sto na epistrepsei user kai oxi apla Optional
+        List <User> request_connections = u.getRequest_connections();
+        return request_connections;
+    }
+
+    @PostMapping("/user/{userId}/request/{connectionId}")
+    User setRequestsByUserId(@PathVariable (value = "userId") Long userId,
+                               @PathVariable (value = "connectionId") Long connectionId) {
+        User u = repository.findById(userId).get();  // o user pou ekane thn aithsh - user1
+        List <User> request_connections = u.getRequest_connections();  // ta requests tou user1
+        User new_request_connection = repository.findById(connectionId).get(); // o user2
+        request_connections.add(new_request_connection); // pros8esh tou user2 sta request tou user1
+        u.setRequest_connections(request_connections);   //
+
+        List <User> response_connections = new_request_connection.getResponse_connections();  // pairnoume ta responses tou user 2
+        response_connections.add(u); // pros8etoume ton user1 sta responses tou user2
+        new_request_connection.setResponse_connections(response_connections); //
+
+        repository.save(new_request_connection);
+        return repository.save(u);
+
+    }
+
+
+    @GetMapping("/user/{userId}/responses")
+    List <User> getAllResponsesByUserId(@PathVariable (value = "userId") Long userId) {
+
+        User u = repository.findById(userId).get();
+        List <User> response_connections = u.getResponse_connections();
+        return response_connections;
+    }
+
+//    @PostMapping("/user/{userId}/response/{connectionId}")  // kanei accept ton xrhsth
+//    User setResponsesByUserId(@PathVariable (value = "userId") Long userId,
+//                             @PathVariable (value = "connectionId") Long connectionId) {
+//        User u = repository.findById(userId).get();  // o user pou ekane thn aithsh - user1
+//        List <User> request_connections = u.getRequest_connections();  // ta requests tou user1
+//        User new_request_connection = repository.findById(connectionId).get(); // o user2
+//        request_connections.add(new_request_connection); // pros8esh tou user2 sta request tou user1
+//        u.setRequest_connections(request_connections);   //
+//
+//        List <User> response_connections = new_request_connection.getResponse_connections();  // pairnoume ta responses tou user 2
+//        response_connections.add(u); // pros8etoume ton user1 sta responses tou user2
+//        new_request_connection.setResponse_connections(response_connections); //
+//
+//        repository.save(new_request_connection);
+//        return repository.save(u);
+//
+//    }
 
 
 }

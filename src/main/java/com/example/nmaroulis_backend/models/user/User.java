@@ -37,8 +37,17 @@ public class User {
 //    private List<Post> posts;
 
     @ManyToMany (cascade= CascadeType.ALL)
-    @JsonIgnoreProperties("users")
+    @JsonIgnoreProperties({"request_connections", "response_connections", "connections"})
     private List<User> connections;
+
+    @ManyToMany (cascade= CascadeType.ALL)
+    @JsonIgnoreProperties({"request_connections", "response_connections", "connections"})
+    private List<User> request_connections;
+
+    @ManyToMany (cascade= CascadeType.ALL)
+    @JsonIgnoreProperties({"request_connections", "response_connections", "connections"})
+    private List<User> response_connections;
+
 
     public User() {}
 

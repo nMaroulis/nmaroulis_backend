@@ -30,9 +30,8 @@ public class PostController {
     // Aggregate root
 
     @GetMapping("/users/{userId}/posts")
-    public Page<Post> getAllPostsByUserId(@PathVariable (value = "userId") Long userId,
-                                          Pageable pageable) {
-        return postRepository.findByUserId(userId, pageable);
+    public List<Post> getAllPostsByUserId(@PathVariable (value = "userId") Long userId){//, Pageable pageable) { Page<Post>
+        return postRepository.findByUserId(userId);//, pageable);
     }
 
     @PostMapping("/users/{userId}/posts")
