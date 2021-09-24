@@ -98,7 +98,8 @@
       <workItem from="1631875634286" duration="7270000" />
       <workItem from="1632049166051" duration="57313000" />
       <workItem from="1632318576438" duration="282000" />
-      <workItem from="1632404949148" duration="26692000" />
+      <workItem from="1632404949148" duration="26929000" />
+      <workItem from="1632473535242" duration="7121000" />
     </task>
     <servers />
   </component>
@@ -115,6 +116,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.StackOverflowError" package="java.lang" />
           <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="3" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,5 +1,6 @@
 package com.example.nmaroulis_backend.models.user;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -120,7 +121,7 @@ class UserController {
                                 .map(GrantedAuthority::getAuthority)
                                 .collect(Collectors.toList()))
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 600000))
+                .setExpiration(new Date(System.currentTimeMillis() + 3600000)) // poso krataei to token
                 .signWith(SignatureAlgorithm.HS512,
                         secretKey.getBytes()).compact();
 
@@ -255,7 +256,7 @@ class UserController {
         }
         else{
 
-            List <Post> posts = null;
+            List <Post> posts = new ArrayList<Post>();;
 
             for (int i = 0; i < connections.size(); i++) {
 
