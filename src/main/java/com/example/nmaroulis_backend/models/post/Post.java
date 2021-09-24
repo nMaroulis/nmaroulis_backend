@@ -20,6 +20,7 @@ public class Post {
     private String title;
     private String body;
     private Boolean accesibility;  // public or private
+    private String time_posted;
 
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -35,18 +36,20 @@ public class Post {
 
     public Post() {}
 
-    public Post(String title,String body, boolean accesibility, User user, Image image) {
+    public Post(String title,String body, boolean accesibility, String time_posted, User user, Image image) {
         this.title = title;
         this.body = body;
         this.accesibility = accesibility;
+        this.time_posted = time_posted;
         this.user = user;
         this.image = image;
     }
 
-    public Post(String title,String body, boolean accesibility, User user) {
+    public Post(String title,String body, boolean accesibility, String time_posted,User user) {
         this.title = title;
         this.body = body;
         this.accesibility = accesibility;
+        this.time_posted = time_posted;
         this.user = user;
     }
 
