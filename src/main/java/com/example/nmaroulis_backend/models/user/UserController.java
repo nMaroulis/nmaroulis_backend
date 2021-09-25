@@ -273,5 +273,30 @@ class UserController {
     }
 
 
+    @GetMapping("/user_search/{userId}")
+    List <User> connectionSuggestions(@PathVariable (value = "userId") Long userId) {
+
+        User u = repository.findById(userId).get(); // to get() voh8aei sto na epistrepsei user kai oxi apla Optional
+        List <User> connections = u.getConnections();
+        List <User> connection_requests = u.getRequest_connections();
+        List <User> connection_responses = u.getResponse_connections();
+
+        List<User> all_users = repository.findAll();
+        all_users.remove(u); // afairw emena apo th lista
+
+        if(!connections.isEmpty()){
+            all_users.removeAll(connections);
+        }
+        if(!connection_requests.isEmpty()){
+            all_users.removeAll(connection_requests);
+        }
+        if(!connection_responses.isEmpty()){
+            all_users.removeAll(connection_responses);
+        }
+
+        return all_users;
+
+
+    }
 
 }
