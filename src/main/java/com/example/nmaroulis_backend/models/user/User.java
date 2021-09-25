@@ -1,6 +1,5 @@
 package com.example.nmaroulis_backend.models.user;
 
-import com.example.nmaroulis_backend.models.post.Post;
 import com.example.nmaroulis_backend.title.Title;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
@@ -32,9 +31,9 @@ public class User {
     @JsonIgnoreProperties("users")
     private Title title;
 
-//    @OneToMany (cascade= CascadeType.ALL)
-//    @JsonIgnoreProperties("users")
-//    private List<Post> posts;
+    //    @OneToMany (cascade= CascadeType.ALL)
+    //    @JsonIgnoreProperties("users")
+    //    private List<Post> posts;
 
     @ManyToMany (cascade= CascadeType.ALL)
     @JsonIgnoreProperties({"request_connections", "response_connections", "connections", "password"})
